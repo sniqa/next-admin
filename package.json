@@ -1,0 +1,24 @@
+{
+	"name": "next-admin",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"client": "cd /data/next-admin/packages/client && bun run dev",
+		"server": "cd /data/next-admin/packages/server &&  bun run --watch ./index.ts",
+		"server-test": "cd packages/server bun run --watch ./test.ts",
+		"build-client": "cd packages/client && bun run build",
+		"build-server": "cd packages/server && bun build ./index.tsx --outdir ./build",
+		"build-all": "bun run build-client & bun run build-server",
+		"run-all": "bun run client & bun run server"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	}
+}

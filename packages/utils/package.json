@@ -1,0 +1,17 @@
+{
+	"name": "@next-admin/utils",
+	"version": "0.1.0",
+	"module": "index.ts",
+	"private": true,
+	"type": "module",
+	"dependencies": {
+		"dayjs": "^1.11.10",
+		"zod": "^3.22.4"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	}
+}
