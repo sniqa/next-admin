@@ -1,24 +1,12 @@
 {
-  "name": "@next-admin/server",
-  "version": "0.1.0",
-  "module": "index.ts",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "@prisma/client": "5.8.1",
-    "ip": "^1.1.8",
-    "socket.io": "^4.7.3",
-    "zod": "^3.22.4"
-  },
-  "devDependencies": {
-    "@next-admin/types": "0.1.0",
-    "@next-admin/utils": "0.1.0",
-    "@types/bun": "latest",
-    "@types/ip": "^1.1.3",
-    "@types/node": "^20",
-    "prisma": "^5.8.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  }
+	"name": "@next-admin/server",
+	"version": "0.1.0",
+	"module": "index.ts",
+	"private": true,
+	"type": "module",
+	"dependencies": {},
+	"devDependencies": {},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	}
 }

@@ -1,7 +1,7 @@
 'use client'
 
-import { socket } from '@/app/provider'
 import { CommonConstant, DeviceModalConstant } from '@/lib/constant'
+import socket from '@/lib/socket'
 import {
 	Button,
 	Modal,

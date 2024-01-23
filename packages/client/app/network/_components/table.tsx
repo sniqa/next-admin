@@ -1,6 +1,5 @@
 'use client'
 
-import { socket } from '@/app/provider'
 import ComfirmButton from '@/components/custom/confirmButton'
 import {
 	CommonConstant,
@@ -8,6 +7,7 @@ import {
 	NetowrkConstant,
 	UserConstant,
 } from '@/lib/constant'
+import socket from '@/lib/socket'
 import { ActionIcon, Button, Select } from '@mantine/core'
 import type { IpAddress } from '@next-admin/types'
 

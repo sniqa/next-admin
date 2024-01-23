@@ -1,11 +1,11 @@
 'use client'
 
-import { socket } from '@/app/provider'
 import ConfirmButton from '@/components/custom/confirmButton'
 import CreateUserDialog from '@/components/dialog/createUserDialog'
 import EditUserDialog from '@/components/dialog/editUserDialog'
 import { CommonConstant, UserConstant } from '@/lib/constant'
 import { useAtom, usersAtom } from '@/lib/jotai'
+import socket from '@/lib/socket'
 import { ActionIcon, Button, Tooltip } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import type { User } from '@next-admin/types'

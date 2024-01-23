@@ -9,32 +9,19 @@ import {
 	usersAtom,
 } from '@/lib/jotai'
 import type {
-	ClientToServerEvents,
 	Device,
 	DeviceModel,
 	DeviceStatus,
 	Network,
 	Result,
-	ServerToClientEvents,
 	User,
 } from '@next-admin/types'
 
+import socket from '@/lib/socket'
 import { Input, MantineProvider, createTheme } from '@mantine/core'
 import '@mantine/core/styles.css'
 import { ModalsProvider } from '@mantine/modals'
 import { ReactNode, useEffect } from 'react'
-import { Manager, Socket } from 'socket.io-client'
-
-const hostname = window.location.hostname
-const protocol = window.location.protocol
-const port = 3001
-
-const url = `${protocol}//${hostname}:${port}`
-
-const manager = new Manager(url)
-
-export const socket: Socket<ServerToClientEvents, ClientToServerEvents> =
-	manager.socket('/')
 
 const Provider = ({ children }: { children: ReactNode }) => {
 	const theme = createTheme({

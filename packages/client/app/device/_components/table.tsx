@@ -1,21 +1,27 @@
 'use client'
 
-import { socket } from '@/app/provider'
 import ConfirmButton from '@/components/custom/confirmButton'
 import DeviceModal from '@/components/dialog/createDeviceDialog'
+import DeviceDropzonDialog from '@/components/dialog/deviceDropzoneDialog'
 import EditDeviceDialog from '@/components/dialog/editDeviceDialog'
 import { CommonConstant, DeviceConstant } from '@/lib/constant'
+import { exportExcelData } from '@/lib/excel'
 import { deviceAtom, useAtom } from '@/lib/jotai'
+import socket from '@/lib/socket'
 import { ActionIcon, Button, Tooltip } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import type { Device } from '@next-admin/types'
 import { IconEdit, IconHistory, IconTrash } from '@tabler/icons-react'
-import { MantineReactTable, useMantineReactTable } from 'mantine-react-table'
+import {
+	MRT_Row,
+	MantineReactTable,
+	useMantineReactTable,
+} from 'mantine-react-table'
 import 'mantine-react-table/styles.css'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import DeviceHistoryTable from './historyTable'
-import { columns } from './util'
+import { columns, exportDeviceExcelColumns } from './util'
 
 const DeviceTable = () => {
 	const [devices, _] = useAtom(deviceAtom)
@@ -25,6 +31,8 @@ const DeviceTable = () => {
 	const [opened1, handle1] = useDisclosure(false)
 
 	const [historyOpened, historyHandle] = useDisclosure(false)
+
+	const [importOpened, importHandle] = useDisclosure(false)
 
 	const [current, setCurrent] = useState<Device | null>(null)
 
@@ -55,17 +63,48 @@ const DeviceTable = () => {
 		setHistoryOfDevice(id)
 	}
 
+	const handleOnExport = (rows: MRT_Row<Device>[]) => () => {
+		exportExcelData(
+			exportDeviceExcelColumns,
+			rows.map((row) => ({
+				location: row.original.location,
+				serialNumber: row.original.serialNumber,
+				productNumber: row.original.productNumber,
+				username: row.original.user?.username,
+				network: row.original.ipAddress?.network?.name,
+				ipAddress: row.original.ipAddress?.ip,
+				deviceStatus: row.original.deviceStatus?.status,
+				mac: row.original.mac,
+				diskSerialNumber: row.original.diskSerialNumber,
+				category: row.original.deviceModel?.category,
+				model: row.original.deviceModel?.model,
+				remark: row.original.remark,
+			}))
+		)
+	}
 	const table = useMantineReactTable({
 		columns,
 		data: devices,
 		enableRowActions: true,
 		enableStickyHeader: true,
 		enableFilters: true,
+		enableSelectAll: true,
+		enableRowSelection: true,
+		positionToolbarAlertBanner: 'bottom',
 		initialState: { density: 'xs' },
 		mantineTableContainerProps: { mah: 'calc(100vh - 12rem)' },
-		renderTopToolbarCustomActions: () => (
+		renderTopToolbarCustomActions: ({ table }) => (
 			<div className="flex gap-4">
 				<Button onClick={open}>{DeviceConstant.CREATE_DEVICE}</Button>
+				<Button
+					onClick={handleOnExport(table.getSelectedRowModel().rows)}
+					disabled={table.getSelectedRowModel().rows.length <= 0}
+				>
+					{CommonConstant.EXPORT_SELECTED_TO_XLSX}
+				</Button>
+				<Button onClick={importHandle.open}>
+					{CommonConstant.IMPORT_TO_TABLE}
+				</Button>
 			</div>
 		),
 		renderRowActions: ({ row }) => (
@@ -121,6 +160,8 @@ const DeviceTable = () => {
 				onClose={historyHandle.close}
 				deviceId={currentHistotyOfDevice}
 			/>
+
+			<DeviceDropzonDialog opened={importOpened} onClose={importHandle.close} />
 		</>
 	)
 }

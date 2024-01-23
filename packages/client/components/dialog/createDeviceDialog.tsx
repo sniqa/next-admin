@@ -1,6 +1,5 @@
 'use client'
 
-import { socket } from '@/app/provider'
 import SelectWithCreate from '@/components/custom/selectWithCreate'
 import CreateDeviceModelDialog from '@/components/dialog/createDeviceModelDialog'
 import CreateNetworkDialog from '@/components/dialog/createNetworkDialog'
@@ -19,6 +18,7 @@ import {
 	useAtom,
 	usersSelectAtom,
 } from '@/lib/jotai'
+import socket from '@/lib/socket'
 import {
 	Button,
 	Modal,

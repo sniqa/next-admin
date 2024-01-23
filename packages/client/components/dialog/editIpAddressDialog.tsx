@@ -1,8 +1,8 @@
 'use client'
 
-import { socket } from '@/app/provider'
 import { CommonConstant, NetowrkConstant, UserConstant } from '@/lib/constant'
 import { networkSelectAtom, useAtom, usersSelectAtom } from '@/lib/jotai'
+import socket from '@/lib/socket'
 import { Button, Modal, ModalProps, TextInput, Textarea } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import { useDisclosure } from '@mantine/hooks'

@@ -1,7 +1,7 @@
 'use client'
 
-import { socket } from '@/app/provider'
 import { CommonConstant, DeviceConstant } from '@/lib/constant'
+import socket from '@/lib/socket'
 import { Button, Modal, ModalProps, TextInput, Textarea } from '@mantine/core'
 import { useForm, zodResolver } from '@mantine/form'
 import { DeviceStatusCreateInput } from '@next-admin/types'

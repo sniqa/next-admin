@@ -48,3 +48,44 @@ export const columns: MRT_ColumnDef<Device>[] = [
 	},
 	{ accessorKey: 'remark', header: CommonConstant.REMARK },
 ]
+
+export const exportDeviceExcelColumns = [
+	{ key: 'location', header: DeviceConstant.LOCATION },
+	{
+		key: 'serialNumber',
+		header: DeviceConstant.SERIAL_NUMBER,
+	},
+	{
+		key: 'productNumber',
+		header: DeviceConstant.PRODUCT_NUMBER,
+	},
+
+	{ key: 'username', header: UserConstant.USER },
+	{
+		key: 'network',
+		header: NetowrkConstant.NETWORK_NAME,
+	},
+	{
+		key: 'ipAddress',
+		header: NetowrkConstant.IP_ADDRESS,
+	},
+	{
+		key: 'deviceStatus',
+		header: DeviceConstant.STATUS,
+	},
+
+	{ key: 'mac', header: DeviceConstant.MAC },
+	{
+		key: 'diskSerialNumber',
+		header: DeviceConstant.DISK_SERIAL_NUMBER,
+	},
+	{
+		key: 'category',
+		header: DeviceModalConstant.CATEGORY,
+	},
+	{
+		key: 'model',
+		header: DeviceModalConstant.MODEL,
+	},
+	{ key: 'remark', header: CommonConstant.REMARK },
+]

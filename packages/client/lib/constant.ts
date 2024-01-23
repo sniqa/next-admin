@@ -27,6 +27,9 @@ export enum CommonConstant {
 	UPDATE_HISTORY = '历史变更记录',
 
 	LAST_UPDATE_TIME = '最后更新时间',
+
+	EXPORT_SELECTED_TO_XLSX = '导出选中至xlsx',
+	IMPORT_TO_TABLE = '导入',
 }
 
 export enum NetowrkConstant {
@@ -64,6 +67,8 @@ export enum DeviceConstant {
 	SERIAL_NUMBER_NOT_BE_EMPTY = '序列号不能为空',
 	CREATE_DEVICE = '创建设备',
 	EDIT_DEVICE = '编辑设备',
+
+	DEVICE_TABLE = '设备表格',
 
 	MAC = 'MAC',
 	DISK_SERIAL_NUMBER = '硬盘序列号',

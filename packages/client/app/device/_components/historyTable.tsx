@@ -1,7 +1,7 @@
 'use client'
 
-import { socket } from '@/app/provider'
 import { CommonConstant } from '@/lib/constant'
+import socket from '@/lib/socket'
 import { Drawer, DrawerProps } from '@mantine/core'
 import { Device } from '@next-admin/types'
 import { MantineReactTable, useMantineReactTable } from 'mantine-react-table'
