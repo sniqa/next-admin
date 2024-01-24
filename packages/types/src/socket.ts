@@ -5,6 +5,7 @@ import type {
 	DeviceModelCreateInput,
 	DeviceStatus,
 	DeviceStatusCreateInput,
+	UploadDeviceInput,
 } from './device'
 import type { IpAddress, Network, NetworkCreateInput } from './network'
 import type { Result } from './result'
@@ -71,6 +72,11 @@ export interface ClientToServerEvents {
 	update_device: (
 		data: Device,
 		callback: (response: Result<Device>) => void
+	) => void
+
+	upload_device: (
+		data: UploadDeviceInput[],
+		callback: (response: Result<UploadDeviceInput | Device>[]) => void
 	) => void
 
 	// device model

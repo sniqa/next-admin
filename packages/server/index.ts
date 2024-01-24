@@ -12,6 +12,7 @@ import {
 	find_device,
 	find_device_history,
 	update_device,
+	upload_device,
 } from './controllers/device/device'
 import {
 	create_device_model,
@@ -217,6 +218,18 @@ io.on('connection', (socket) => {
 			callback(successResult(result) as any)
 		} catch (err) {
 			callback(faildResult((err as Error).message))
+		}
+	})
+
+	socket.on('upload_device', async (data, callback) => {
+		try {
+			const result = await upload_device(data)
+
+			sendDeviceData(socket)
+
+			callback(result as any)
+		} catch (err) {
+			// callback(faildResult((err as Error).message))
 		}
 	})
 

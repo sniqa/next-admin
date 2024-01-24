@@ -48,3 +48,18 @@ export type DeviceHistory = Id &
 		deviceId: string | null
 		data: string
 	}
+
+export type UploadDeviceInput = {
+	location: string
+	serialNumber: string
+	productNumber: string
+	username?: string
+	network?: string
+	ipAddress?: string
+	deviceStatus?: string
+	mac: string
+	diskSerialNumber: string
+	category: string
+	model: string
+	remark: string
+}

@@ -4,6 +4,8 @@ import type {
 	DeviceStatus,
 	IpAddress,
 	Network,
+	Result,
+	UploadDeviceInput,
 	User,
 } from '@next-admin/types'
 
@@ -80,3 +82,5 @@ export const deviceStatusSelectAtom = atom((get) =>
 		label: status.status,
 	}))
 )
+
+export const uploadFaildResultAtom = atom<Result<UploadDeviceInput>[]>([])
