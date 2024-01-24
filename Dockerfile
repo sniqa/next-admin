@@ -1,15 +1,22 @@
 # use the official Bun image
 # see all versions at https://hub.docker.com/r/oven/bun/tags
-FROM imbios/bun-node as base
+# FROM imbios/bun-node as base
+FROM oven/bun:latest as base
 WORKDIR /data/next-admin
 
 # install dependencies into temp directory
 # this will cache them and speed up future builds
 FROM base AS install
-RUN mkdir -p /temp/dev
-COPY . /temp/dev/
-RUN cd /temp/dev && bun install 
- 
+# RUN mkdir -p /temp/dev
+COPY --from=node:21 /usr/local/bin/node /usr/local/bin/node
+COPY . /data/next-admin
+RUN cd /data/next-admin
+RUN ls
+RUN bun i 
+RUN pwd
+RUN ls
+
+RUN ls
 
 # # install with --production (exclude devDependencies)
 # RUN mkdir -p /temp/prod
@@ -18,9 +25,10 @@ RUN cd /temp/dev && bun install
 
 # # copy node_modules from temp directory
 # # then copy all (non-ignored) project files into the image
-FROM base AS prerelease
-COPY --from=install /temp/dev/ /data/next-admin/
-RUN cd /data/next-admin/packages/server && npx prisma generate
+# FROM base AS prerelease
+# COPY --from=install /temp/dev/ /data/next-admin/
+
+RUN  bunx prisma generate --schema=/data/next-admin/packages/server/prisma/schema.prisma
 
 # # [optional] tests & build
 # # ENV NODE_ENV=production
@@ -35,7 +43,8 @@ RUN cd /data/next-admin/packages/server && npx prisma generate
 
 # # run the app
 EXPOSE 3000 3001
-ENTRYPOINT [ "bun", "run", "all"]
+RUN cd /data/next-admin
+ENTRYPOINT [ "bun", "run", "docker"]
 
 # FROM imbios/bun-node 
 # WORKDIR /data/next-admin
