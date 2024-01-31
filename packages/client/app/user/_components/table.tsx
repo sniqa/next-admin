@@ -68,8 +68,10 @@ const UserTable = () => {
     data: users,
     enableRowActions: true,
     enableStickyHeader: true,
+    enableRowVirtualization: true,
     initialState: { density: "xs" },
     mantineTableContainerProps: { mah: "calc(100vh - 12rem)" },
+    displayColumnDefOptions: { "mrt-row-actions": { size: 120 } },
     renderTopToolbarCustomActions: () => (
       <div className="flex gap-4">
         <Button onClick={open}>{UserConstant.CREATE_USER}</Button>

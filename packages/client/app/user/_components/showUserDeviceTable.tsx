@@ -27,6 +27,8 @@ const ShowUserDeviceTable = ({ user, ...props }: ShowUserDeviceTableProps) => {
     data: userDevices,
     enableStickyHeader: true,
     enableFilters: true,
+    enablePagination: false,
+    enableRowVirtualization: true,
     initialState: { density: "xs" },
     mantineTableContainerProps: { mah: "calc(100vh - 12rem)" },
   });

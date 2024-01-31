@@ -20,6 +20,7 @@ export const columns: MRT_ColumnDef<Device>[] = [
 	},
 
 	{ accessorKey: 'user.username', header: UserConstant.USER },
+	{ accessorKey: 'user.department', header: UserConstant.DEPARTMENT },
 	{
 		accessorKey: 'ipAddress.network.name',
 		header: NetowrkConstant.NETWORK_NAME,
@@ -61,6 +62,7 @@ export const exportDeviceExcelColumns = [
 	},
 
 	{ key: 'username', header: UserConstant.USER },
+	{ key: 'department', header: UserConstant.DEPARTMENT },
 	{
 		key: 'network',
 		header: NetowrkConstant.NETWORK_NAME,

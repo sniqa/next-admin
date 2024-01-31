@@ -54,6 +54,7 @@ export type UploadDeviceInput = {
 	serialNumber: string
 	productNumber: string
 	username?: string
+	department?: string
 	network?: string
 	ipAddress?: string
 	deviceStatus?: string
