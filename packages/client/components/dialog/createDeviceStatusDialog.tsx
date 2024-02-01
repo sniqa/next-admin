@@ -5,7 +5,7 @@ import socket from '@/lib/socket'
 import { Button, Modal, ModalProps, TextInput, Textarea } from '@mantine/core'
 import { useForm, zodResolver } from '@mantine/form'
 import { DeviceStatusCreateInput } from '@next-admin/types'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
@@ -14,7 +14,9 @@ const formSchema = z.object({
 	remark: z.string().optional(),
 })
 
-const CreateDeviceStatusDialog = (props: ModalProps) => {
+const CreateDeviceStatusDialog = memo((props: ModalProps) => {
+	console.log('createDeviceStatus')
+
 	const [loading, setLoading] = useState(false)
 
 	const form = useForm({
@@ -73,6 +75,6 @@ const CreateDeviceStatusDialog = (props: ModalProps) => {
 			</form>
 		</Modal>
 	)
-}
+})
 
 export default CreateDeviceStatusDialog

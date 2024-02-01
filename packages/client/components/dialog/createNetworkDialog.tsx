@@ -13,7 +13,7 @@ import { useForm } from '@mantine/form'
 import type { NetworkCreateInput } from '@next-admin/types'
 import { validateCidrs } from '@next-admin/utils'
 import { zodResolver } from 'mantine-form-zod-resolver'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { FieldValues } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -23,7 +23,9 @@ const formSchema = z.object({
 	description: z.string().optional(),
 })
 
-const CreateNetworkDialog = (props: ModalProps) => {
+const CreateNetworkDialog = memo((props: ModalProps) => {
+	console.log('createNetwork')
+
 	const [loading, setLoading] = useState(false)
 
 	const form = useForm({
@@ -148,6 +150,6 @@ const CreateNetworkDialog = (props: ModalProps) => {
 			</form>
 		</Modal>
 	)
-}
+})
 
 export default CreateNetworkDialog

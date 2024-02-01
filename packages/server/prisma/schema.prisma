@@ -12,11 +12,11 @@ datasource db {
 
 model User {
   id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  username String  @unique
-  account  String?
-  password String?
+  username String  @unique @default("")
+  account  String? @default("")
+  password String? @default("")
 
-  department String?
+  department String? @default("")
 
   authorization Authorization?
 
@@ -83,13 +83,13 @@ model IpAddress {
 
 model Device {
   id            String  @id @default(auto()) @map("_id") @db.ObjectId
-  serialNumber  String  @unique
-  productNumber String? @unique
-  name          String?
-  location      String?
-  mac           String? @unique
-  diskSerialNumber        String?
-
+  serialNumber  String  @unique @default("")
+  productNumber String? @unique @default("")
+  name          String? @default("")
+  location      String? @default("")
+  mac           String? @unique @default("")
+  diskSerialNumber        String? @default("")
+ 
   deviceHistory  DeviceHistory?
 
   deviceStatus   DeviceStatus? @relation(fields: [deviceStatusId], references: [id], onUpdate: Cascade, onDelete: SetNull)
@@ -117,8 +117,8 @@ model DeviceHistory {
   deviceId String @db.ObjectId @unique
 
 
-  data String
-
+  data String @default("")
+ 
   description String? @default("")
   remark      String? @default("")
   createAt    DateTime @default(now())
@@ -128,9 +128,9 @@ model DeviceHistory {
 model DeviceModel {
   id       String  @id @default(auto()) @map("_id") @db.ObjectId
   model    String  @unique
-  name     String?
-  type     String?
-  category String?
+  name     String? @default("")
+  type     String? @default("")
+  category String? @default("")
 
   device Device[]
 

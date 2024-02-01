@@ -33,7 +33,7 @@ import { useDisclosure } from '@mantine/hooks'
 import type { Device } from '@next-admin/types'
 import { zodResolver } from 'mantine-form-zod-resolver'
 import { useRouter } from 'next/navigation'
-import { useEffect, useMemo, useState } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 import { FieldValues } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -50,7 +50,7 @@ const formSchema = z.object({
 })
 
 // jsx
-const CreateDeviceDialog = (props: ModalProps) => {
+const CreateDeviceDialog = memo((props: ModalProps) => {
 	const router = useRouter()
 
 	const form = useForm({
@@ -94,7 +94,7 @@ const CreateDeviceDialog = (props: ModalProps) => {
 			(network) => network.value === currentSelectNetwork
 		)
 
-		console.log(target)
+		console.log('createDevice')
 
 		return target
 			? target.ips
@@ -276,6 +276,6 @@ const CreateDeviceDialog = (props: ModalProps) => {
 			/>
 		</>
 	)
-}
+})
 
 export default CreateDeviceDialog

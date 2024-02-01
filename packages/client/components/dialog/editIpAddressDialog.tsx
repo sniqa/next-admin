@@ -7,7 +7,7 @@ import { Button, Modal, ModalProps, TextInput, Textarea } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import { useDisclosure } from '@mantine/hooks'
 import { IpAddress } from '@next-admin/types'
-import { useEffect, useMemo, useState } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 import { toast } from 'sonner'
 import SelectWithCreate from '../custom/selectWithCreate'
 import CreateUserDialog from './createUserDialog'
@@ -25,7 +25,8 @@ const initialValues = {
 	description: '',
 }
 
-const EditIpAddressDialog = ({ data, ...props }: EditIpAddressDialog) => {
+const EditIpAddressDialog = memo(({ data, ...props }: EditIpAddressDialog) => {
+	console.log('editIpAddress')
 	const [userDialogOpened, userDialoghandle] = useDisclosure(false)
 
 	const [loading, setLoading] = useState(false)
@@ -123,6 +124,6 @@ const EditIpAddressDialog = ({ data, ...props }: EditIpAddressDialog) => {
 			/>
 		</>
 	)
-}
+})
 
 export default EditIpAddressDialog

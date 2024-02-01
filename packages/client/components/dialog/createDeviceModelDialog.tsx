@@ -12,7 +12,7 @@ import {
 import { useForm } from '@mantine/form'
 import { DeviceModel } from '@next-admin/types'
 import { zodResolver } from 'mantine-form-zod-resolver'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { FieldValues } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -26,7 +26,9 @@ const formSchema = z.object({
 	remark: z.string().optional(),
 })
 
-const CreateDeviceModelDialog = (props: ModalProps) => {
+const CreateDeviceModelDialog = memo((props: ModalProps) => {
+	console.log('createDeviceModel')
+
 	const [loading, setLoading] = useState(false)
 
 	const form = useForm({
@@ -116,6 +118,6 @@ const CreateDeviceModelDialog = (props: ModalProps) => {
 			</form>
 		</Modal>
 	)
-}
+})
 
 export default CreateDeviceModelDialog

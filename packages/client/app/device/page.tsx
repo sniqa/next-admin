@@ -1,11 +1,21 @@
-import DeviceTable from "./_components/table";
+'use client'
+
+import socket from '@/lib/socket'
+import { useEffect } from 'react'
+import DeviceTable from './_components/table'
 
 const DevicePage = () => {
-  return (
-    <div className="p-2">
-      <DeviceTable />
-    </div>
-  );
-};
+	console.log('devicePage')
 
-export default DevicePage;
+	useEffect(() => {
+		socket.emit('get_data', ['find_device'])
+	}, [])
+
+	return (
+		<div className="p-2">
+			<DeviceTable />
+		</div>
+	)
+}
+
+export default DevicePage

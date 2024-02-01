@@ -32,7 +32,7 @@ import { useForm } from '@mantine/form'
 import { useDisclosure } from '@mantine/hooks'
 import type { Device } from '@next-admin/types'
 import { zodResolver } from 'mantine-form-zod-resolver'
-import { useEffect, useMemo, useState } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 import { FieldValues } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -68,7 +68,8 @@ const initialValues = {
 }
 
 // jsx
-const EditDeviceDialog = ({ data, ...props }: DeviceDialogProps) => {
+const EditDeviceDialog = memo(({ data, ...props }: DeviceDialogProps) => {
+	console.log('editDevice')
 	const form = useForm({
 		initialValues,
 		validate: zodResolver(formSchema),
@@ -299,6 +300,6 @@ const EditDeviceDialog = ({ data, ...props }: DeviceDialogProps) => {
 			/>
 		</>
 	)
-}
+})
 
 export default EditDeviceDialog

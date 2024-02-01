@@ -12,7 +12,7 @@ import {
 import { useForm } from '@mantine/form'
 import type { User } from '@next-admin/types'
 import { zodResolver } from 'mantine-form-zod-resolver'
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { FieldValues } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -37,7 +37,8 @@ const initialValues = {
 	remark: '',
 }
 
-const EditUserDialog = ({ data, ...props }: EditUserDialogProps) => {
+const EditUserDialog = memo(({ data, ...props }: EditUserDialogProps) => {
+	console.log('editUser')
 	const [loading, setLoading] = useState(false)
 
 	const form = useForm({
@@ -129,6 +130,6 @@ const EditUserDialog = ({ data, ...props }: EditUserDialogProps) => {
 			</form>
 		</Modal>
 	)
-}
+})
 
 export default EditUserDialog
