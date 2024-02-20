@@ -1,66 +1,68 @@
-import type { Common, Id, Timestring } from './common'
-import type { IpAddress } from './network'
-import type { User } from './user'
+import type { Common, Id, Timestring } from "./common";
+import type { IpAddress } from "./network";
+import type { User } from "./user";
 
 export type DeviceCreateInput = Common & {
-	serialNumber: string
-	productNumber?: string
-	name?: string
-	location?: string
-	status?: number
-	mac?: string
-	diskSerialNumber?: string
+  serialNumber: string;
+  productNumber?: string;
+  displaySerialNumber?: string;
+  name?: string;
+  location?: string;
+  status?: number;
+  mac?: string;
+  diskSerialNumber?: string;
 
-	deviceStatus?: DeviceStatus
-	deviceStatusId: string | null
+  deviceStatus?: DeviceStatus;
+  deviceStatusId: string | null;
 
-	user?: User
-	userId: string | null
+  user?: User;
+  userId: string | null;
 
-	deviceModel?: DeviceModel
-	deviceModelId: string | null
+  deviceModel?: DeviceModel;
+  deviceModelId: string | null;
 
-	ipAddress?: IpAddress
-	ipAddressId: string | null
-}
+  ipAddress?: IpAddress;
+  ipAddressId: string | null;
+};
 
-export type Device = Id & Timestring & DeviceCreateInput
+export type Device = Id & Timestring & DeviceCreateInput;
 
 export type DeviceModelCreateInput = Common & {
-	model: string
-	name?: string
-	type?: string
-	category?: string
-}
+  model: string;
+  name?: string;
+  type?: string;
+  category?: string;
+};
 
-export type DeviceModel = Id & Timestring & DeviceModelCreateInput
+export type DeviceModel = Id & Timestring & DeviceModelCreateInput;
 
 // device status
 export type DeviceStatusCreateInput = Common & {
-	status: string
-}
+  status: string;
+};
 
-export type DeviceStatus = Id & Timestring & DeviceStatusCreateInput
+export type DeviceStatus = Id & Timestring & DeviceStatusCreateInput;
 
 export type DeviceHistory = Id &
-	Timestring &
-	Common & {
-		deviceId: string | null
-		data: string
-	}
+  Timestring &
+  Common & {
+    deviceId: string | null;
+    data: string;
+  };
 
 export type UploadDeviceInput = {
-	location: string
-	serialNumber: string
-	productNumber: string
-	username?: string
-	department?: string
-	network?: string
-	ipAddress?: string
-	deviceStatus?: string
-	mac: string
-	diskSerialNumber: string
-	category: string
-	model: string
-	remark: string
-}
+  location: string;
+  serialNumber: string;
+  productNumber: string;
+  displaySerialNumber: string;
+  username?: string;
+  department?: string;
+  network?: string;
+  ipAddress?: string;
+  deviceStatus?: string;
+  mac: string;
+  diskSerialNumber: string;
+  category: string;
+  model: string;
+  remark: string;
+};

@@ -3,7 +3,7 @@ export const IP_V4_FORMAT_ERROR = "IP_V4_FORMAT_ERROR";
 export const CIDR_FORMAT_ERROR = "CIDR_FORMAT_ERROR";
 export const IP_NOT_ALLOW_ALLOCATE_TWICE = "IP已分配";
 export const NOT_HAVE_THIS_DEVICE = "没有该设备";
-export const NETWORK_AND_IP_ADDRESS_MUST_BE_EXIST = "网络和ip地址必须存在";
+export const NETWORK_AND_IP_ADDRESS_MUST_BE_EXIST = "网络和ip地址必须已经存在";
 export const NETWORK_AND_IP_ADDRESS_MUST_BE_PROVIDER_TOGHTER_OR_NOT =
   "网络和ip地址同时提供或不提供";
 

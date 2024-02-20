@@ -41,6 +41,8 @@ export enum CommonConstant {
   SHOW_FAILD_IMPORT_ITEM = "查看导入失败条目",
   ERROR_MESSAGE = "错误消息",
   DELETE_SELECTED = "删除所选",
+
+  IS_ALLOW_EMPTY_VALUE = "是否允许空值",
 }
 
 export enum NetowrkConstant {
@@ -87,6 +89,8 @@ export enum DeviceConstant {
   DOWNLOAD_IMPORT_DEVICE_TEMPLATE = "下载导入设备模板",
 
   DEVICE_TABLE = "设备表格",
+
+  DISPLAY_SERIAL_NUMBER = "显示器序列号",
 
   DEVICE = "设备",
   MAC = "MAC",
